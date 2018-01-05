@@ -14,19 +14,21 @@ in
     systemd.services.echoserver = {
       description = "A basic echo server";
 
-      after = [ "network.target" ];
-
+      # Configuration
       environment = {
         NAME = "echo";
         PORT = "8080";
       };
 
+      # Start command and user to run it as
       serviceConfig = {
         ExecStart = "${node}/bin/node ${echo}/index.js";
         User = "nodejs";
         Restart = "always";
       };
 
+      # start the service on boot, after networking is enabled
+      after = [ "network.target" ];
       wantedBy = [ "multi-user.target" ];
     };
 

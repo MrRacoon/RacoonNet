@@ -10,8 +10,11 @@ in
   };
 
   defaults = {
-    imports = [ ../targets/virt.nix ];
+    imports = [ ./common.nix ../targets/virt.nix ];
   };
 
   echo1 = echoMachine;
+  echo2 = echoMachine;
+  echo3 = echoMachine;
+  echo4 = echoMachine;
 }
