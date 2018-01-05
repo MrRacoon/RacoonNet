@@ -1,5 +1,6 @@
 { pkgs ? import <nixpkgs> {}, ... }:
 let
+  ec2 = import ../targets/ec2.nix {};
   echoMachine =
     { imports = [ ./echo/machine.nix ]; };
 in
@@ -10,11 +11,15 @@ in
   };
 
   defaults = {
-    imports = [ ./common.nix ../targets/virt.nix ];
+    imports = [ ./common.nix ../targets/ec2.nix ];
   };
 
   echo1 = echoMachine;
   echo2 = echoMachine;
   echo3 = echoMachine;
-  echo4 = echoMachine;
+
+  resources.ec2KeyPairs.my-key-pair = {
+    region = "us-west-2";
+    accessKeyId = "default";
+  };
 }
