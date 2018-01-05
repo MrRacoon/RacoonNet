@@ -1,15 +1,15 @@
 const restify = require('restify');
-const config = require('./package.json');
 
-const server = restify.createServer({
-  name: config.name,
-});
+const name = process.env.NAME;
+const port = process.env.PORT;
 
-server.get(`/${config.name}/:data`, (req, res, next) => {
+const server = restify.createServer({ name });
+
+server.get(`/${name}/:data`, (req, res, next) => {
   console.log('sending back:', req.params.data);
   res.send(200, req.params.data);
 });
 
-server.listen(config.port, () => {
-  console.log('listening on port: ', config.port);
+server.listen(port, () => {
+  console.log(`[${name}] listening on port: ${port}`);
 });

@@ -5,6 +5,6 @@ with pkgs; stdenv.mkDerivation {
   src = ./echo.tar.gz;
   installPhase = ''
     mkdir $out
-    cp -r ./* $out
+    cp -r ./* $out/
   '';
 }

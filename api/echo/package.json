@@ -5,9 +5,9 @@
   "description": "Echo Server ===========",
   "main": "index.js",
   "scripts": {
-    "start": "node ./index.js",
-    "build": "tar -czvf echo.tar.gz index.js package.json",
-    "": "",
+    "start": "NAME=echo PORT=8080 node ./index.js",
+    "build": "mkdir -p dist && cp index.js dist/ && cp package.json dist/ && cp -r node_modules dist/",
+    "package": "tar -czvf echo.tar.gz ./dist/*",
     "test": "mocha"
   },
   "author": "",
