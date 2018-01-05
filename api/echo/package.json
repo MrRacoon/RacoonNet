@@ -1,0 +1,18 @@
+{
+  "name": "echo",
+  "port": 8080,
+  "version": "1.0.0",
+  "description": "Echo Server ===========",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./index.js",
+    "build": "tar -czvf echo.tar.gz index.js package.json",
+    "": "",
+    "test": "mocha"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "restify": "^6.3.4"
+  }
+}
